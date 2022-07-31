@@ -1,0 +1,8 @@
+version: '3.4'
+
+services:
+  desk.api:
+    image:  ${DOCKER_REGISTRY-}multiapp
+    build:
+      context: .
+      dockerfile: Desk.API/docker/Dockerfile
