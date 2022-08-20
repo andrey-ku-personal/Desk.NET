@@ -14,6 +14,10 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Desk.Migrations\Desk.Migrations.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
     <None Update="..\.dockerignore" Link="docker\.dockerignore" />
   </ItemGroup>
 
