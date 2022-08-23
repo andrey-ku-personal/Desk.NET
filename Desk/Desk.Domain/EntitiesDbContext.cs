@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Desk.Domain.Entities;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Storage;
 using System.Reflection;
 
@@ -11,6 +12,8 @@ public class EntitiesDbContext : DbContext
     public EntitiesDbContext(DbContextOptions<EntitiesDbContext> options) : base(options)
     {
     }
+
+    public DbSet<Project> Projects { get; set; } = default!;
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {

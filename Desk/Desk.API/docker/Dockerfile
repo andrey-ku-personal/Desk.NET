@@ -3,6 +3,8 @@ WORKDIR /src
 
 COPY *.sln "./"
 COPY ["Desk.API/Desk.API.csproj", "Desk.API/"]
+COPY ["Desk.Core/Desk.Core.csproj", "Desk.Core/"]
+COPY ["Desk.Domain/Desk.Domain.csproj", "Desk.Domain/"]
 COPY ["Desk.Migrations/Desk.Migrations.csproj", "Desk.Migrations/"]
 RUN dotnet restore "Desk.API/Desk.API.csproj"
 

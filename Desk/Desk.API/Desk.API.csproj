@@ -14,6 +14,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Desk.Core\Desk.Core.csproj" />
     <ProjectReference Include="..\Desk.Migrations\Desk.Migrations.csproj" />
   </ItemGroup>
 

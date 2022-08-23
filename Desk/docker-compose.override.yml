@@ -6,7 +6,9 @@ services:
       context: .
       dockerfile: Desk.API/docker/Dockerfile
     ports:
-     - "8000:80"
+      - "8080:80"
+    depends_on:
+      - sqldata
 
   sqldata:
     image: mcr.microsoft.com/mssql/server:2022-latest
