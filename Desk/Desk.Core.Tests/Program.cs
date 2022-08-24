@@ -4,6 +4,8 @@ using Desk.Core;
 using Desk.Core.Exceptions.Extensions;
 using Desk.Domain;
 using Desk.Migrations;
+using Microsoft.AspNetCore.Builder;
+using Microsoft.Extensions.DependencyInjection;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
 using System.Reflection;
@@ -42,17 +44,9 @@ builder.Services.AddCoreDependencies();
 builder.Services.AddDomainDependencies(builder.Configuration);
 builder.Services.AddMigrationsDependencies(builder.Configuration);
 
-// Add services to the container.
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 
-//builder.Services.AddSwaggerGenNewtonsoftSupport();
-builder.Services.AddSwaggerGen();
-
 var app = builder.Build();
-
-app.UseSwagger();
-app.UseSwaggerUI();
 
 app.UseAuthorization();
 

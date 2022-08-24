@@ -5,5 +5,6 @@ public class UpdateCommandProfile : Profile
     public UpdateCommandProfile()
     {
         CreateMap<UpdateCommand, Domain.Entities.Project>();
+        CreateMap<UpdateCommand, GetCommand>();
     }
 }

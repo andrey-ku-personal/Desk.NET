@@ -11,7 +11,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Desk.Migrations", "Desk.Mig
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Desk.Domain", "Desk.Domain\Desk.Domain.csproj", "{3BBBDCD7-5B9B-40FE-8841-8EDDEBEA7021}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Desk.Core", "Desk.Core\Desk.Core.csproj", "{E8086D4B-1345-467C-9E8A-416E083DF880}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Desk.Core", "Desk.Core\Desk.Core.csproj", "{E8086D4B-1345-467C-9E8A-416E083DF880}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Desk.Core.Tests", "Desk.Core.Tests\Desk.Core.Tests.csproj", "{5FD1C521-0FE4-48B1-A176-2FC0EE01AD44}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -39,6 +41,10 @@ Global
 		{E8086D4B-1345-467C-9E8A-416E083DF880}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E8086D4B-1345-467C-9E8A-416E083DF880}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E8086D4B-1345-467C-9E8A-416E083DF880}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5FD1C521-0FE4-48B1-A176-2FC0EE01AD44}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5FD1C521-0FE4-48B1-A176-2FC0EE01AD44}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5FD1C521-0FE4-48B1-A176-2FC0EE01AD44}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5FD1C521-0FE4-48B1-A176-2FC0EE01AD44}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

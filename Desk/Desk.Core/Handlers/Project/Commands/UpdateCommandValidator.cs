@@ -2,11 +2,11 @@
 
 namespace Desk.Core.Handlers.Project.Commands;
 
-public class UpdateCommandValidator : AbstractValidator<CreateCommand>
+public class UpdateCommandValidator : AbstractValidator<UpdateCommand>
 {
     public UpdateCommandValidator()
     {
-        RuleFor(x => x.Id).Equal(0);
+        RuleFor(x => x.Id).GreaterThan(0);
         RuleFor(x => x.Name).NotNull().NotEmpty().MaximumLength(256);
         When(r => !string.IsNullOrWhiteSpace(r.Description), () =>
         {
