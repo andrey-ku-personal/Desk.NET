@@ -1,0 +1,12 @@
+{
+  "ConnectionStrings": {
+    "Default": "Server=db;Initial Catalog=Desk;User Id=sa;Password=vV5r9tn0M4@;"
+  },
+  "Logging": {
+    "LogLevel": {
+      "Default": "Information",
+      "Microsoft.AspNetCore": "Warning"
+    }
+  },
+  "AllowedHosts": "*"
+}
