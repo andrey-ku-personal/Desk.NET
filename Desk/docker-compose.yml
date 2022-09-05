@@ -1,11 +1,19 @@
 version: '3.4'
 
 services:
-  api:
-    image: ${DOCKER_REGISTRY-}deskapi
+  dotnet:
+    container_name: dotnet
     build:
       context: .
       dockerfile: Desk.API/docker/Dockerfile
 
   db:
+    container_name: mssql
     image: mcr.microsoft.com/mssql/server:2022-latest
+
+  vue:
+    container_name: vue
+    build:
+        context: ./desk.vue
+        dockerfile: docker/Dockerfile
+    
