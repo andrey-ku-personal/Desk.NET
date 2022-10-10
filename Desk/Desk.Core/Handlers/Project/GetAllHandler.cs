@@ -10,26 +10,26 @@ using Microsoft.EntityFrameworkCore;
 namespace Desk.Core.Handlers.Project;
 
 public class GetAllHandler : IRequestHandler<GetAllCommand, FilteredResult<ProjectModel>>
+{
+    private readonly IDbContextFactory<EntitiesDbContext> _contextFactory;
+    private readonly IMapper _mapper;
+
+    public GetAllHandler(
+        IDbContextFactory<EntitiesDbContext> contextFactory,
+        IMapper mapper)
     {
-        private readonly IDbContextFactory<EntitiesDbContext> _contextFactory;
-        private readonly IMapper _mapper;
-
-        public GetAllHandler(
-            IDbContextFactory<EntitiesDbContext> contextFactory,
-            IMapper mapper)
-        {
-            _contextFactory = contextFactory;
-            _mapper = mapper;
-        }
-
-        public async Task<FilteredResult<ProjectModel>> Handle(GetAllCommand command, CancellationToken cancellationToken)
-        {
-            using var context = await _contextFactory.CreateDbContextAsync(cancellationToken);
-
-            return context.Projects
-                .AsNoTracking()
-                .ByQuery(_mapper.Map<GetAllQuery>(command))
-                .ProjectTo<ProjectModel>(_mapper.ConfigurationProvider)
-                .Paginate(command);
-        }
+        _contextFactory = contextFactory;
+        _mapper = mapper;
     }
+
+    public async Task<FilteredResult<ProjectModel>> Handle(GetAllCommand command, CancellationToken cancellationToken)
+    {
+        using var context = await _contextFactory.CreateDbContextAsync(cancellationToken);
+
+        return context.Projects
+            .AsNoTracking()
+            .ByQuery(_mapper.Map<GetAllQuery>(command))
+            .ProjectTo<ProjectModel>(_mapper.ConfigurationProvider)
+            .Paginate(command);
+    }
+}
