@@ -1,7 +1,7 @@
 ﻿using Desk.Core.Queries.Intefaces;
 using System.Linq.Expressions;
 
-namespace BA.Core.Queries;
+namespace Desk.Core.Queries;
 
 public class BaseQuery<TEntity> : IBaseQuery<TEntity> where TEntity : class
 {

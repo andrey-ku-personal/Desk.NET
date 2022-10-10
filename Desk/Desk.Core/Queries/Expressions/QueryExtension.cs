@@ -18,7 +18,7 @@ public static class QuriableExtension
     {
         var result = items.Where(query.GetExpression());
         result = query.GetIncludes().Aggregate(result, (current, include) => current.Include(include));
-        return items.OrderBy(query.GetSortingExpression());
+        return result.OrderBy(query.GetSortingExpression());
     }
 
     public static FilteredResult<TEntity> Paginate<TEntity>(this IQueryable<TEntity> items, IPageFilter filter) where TEntity : class
