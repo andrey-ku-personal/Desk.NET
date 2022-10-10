@@ -1,6 +1,6 @@
 <script lang="ts">
 import { defineComponent } from "vue";
-import { BaseHttp } from "@/Helpers/BaseHttp";
+import { BaseHttp } from "@/helpers/BaseHttp";
 import { CreateRequest } from "./requests/createRequest";
 
 import useVuelidate from "@vuelidate/core";

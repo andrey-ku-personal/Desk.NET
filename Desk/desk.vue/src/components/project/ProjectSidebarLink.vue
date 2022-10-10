@@ -1,6 +1,6 @@
 <script lang="ts">
 import { defineComponent } from "vue";
-import { BaseHttp } from "@/Helpers/BaseHttp";
+import { BaseHttp } from "@/helpers/BaseHttp";
 import ProjectCreatePopup from "@/components/project/ProjectCreatePopup.vue";
 import { ProjectModel } from "@/components/project/models/projectModel";
 import { GetAllRequest } from "@/components/project/requests/getAllRequest";
