@@ -1,5 +1,4 @@
-﻿using BA.Core.Queries;
-using Desk.Core.Queries.Intefaces;
+﻿using Desk.Core.Queries.Intefaces;
 using System.Linq.Expressions;
 
 namespace Desk.Core.Queries;

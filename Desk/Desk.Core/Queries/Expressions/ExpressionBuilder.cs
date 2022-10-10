@@ -4,10 +4,25 @@ namespace Desk.Core.Queries;
 
 public static class ExpressionBuilder
 {
+    public static Expression<TDelegate> AndAlso<TDelegate>(this Expression<TDelegate> left, Expression<TDelegate> right)
+    {
+        return Expression.Lambda<TDelegate>(Expression.AndAlso(left, right), left.Parameters);
+    }
+
+    public static Expression<TDelegate> OrElse<TDelegate>(this Expression<TDelegate> left, Expression<TDelegate> right)
+    {
+        return Expression.Lambda<TDelegate>(Expression.OrElse(left, right), left.Parameters);
+    }
+
     public static Expression<T> Compose<T>(this Expression<T> first, Expression<T> second, Func<Expression, Expression, Expression> merge)
     {
+        // build parameter map (from parameters of second to parameters of first)
         var map = first.Parameters.Select((f, i) => new { f, s = second.Parameters[i] }).ToDictionary(p => p.s, p => p.f);
+
+        // replace parameters in the second lambda expression with parameters from the first
         var secondBody = ParameterRebinder.ReplaceParameters(map, second.Body);
+
+        // apply composition of lambda expression bodies to parameters from the first expression 
         return Expression.Lambda<T>(merge(first.Body, secondBody), first.Parameters);
     }
 
@@ -21,29 +36,51 @@ public static class ExpressionBuilder
         return first.Compose(second, Expression.Or);
     }
 
-    public class ParameterRebinder : ExpressionVisitor
+    public static Expression<Func<T1, T3>> Combine<T1, T2, T3>(this Expression<Func<T1, T2>> first, Expression<Func<T2, T3>> second)
     {
-        private readonly Dictionary<ParameterExpression, ParameterExpression> map;
+        var param = Expression.Parameter(typeof(T1), "param");
+        var newFirst = new ReplaceVisitor(first.Parameters.First(), param).Visit(first.Body);
+        var newSecond = new ReplaceVisitor(second.Parameters.First(), newFirst).Visit(second.Body);
+        return Expression.Lambda<Func<T1, T3>>(newSecond, param);
+    }
+}
 
-        public ParameterRebinder(Dictionary<ParameterExpression, ParameterExpression> map)
+public class ParameterRebinder : ExpressionVisitor
+{
+    private readonly Dictionary<ParameterExpression, ParameterExpression> _map;
+
+    public ParameterRebinder(Dictionary<ParameterExpression, ParameterExpression> map)
+    {
+        _map = map ?? new Dictionary<ParameterExpression, ParameterExpression>();
+    }
+
+    public static Expression ReplaceParameters(Dictionary<ParameterExpression, ParameterExpression> map, Expression exp)
+    {
+        return new ParameterRebinder(map).Visit(exp);
+    }
+
+    protected override Expression VisitParameter(ParameterExpression p)
+    {
+        if (_map.TryGetValue(p, out var replacement))
         {
-            this.map = map ?? new Dictionary<ParameterExpression, ParameterExpression>();
+            p = replacement;
         }
+        return base.VisitParameter(p);
+    }
+}
 
-        public static Expression ReplaceParameters(Dictionary<ParameterExpression, ParameterExpression> map, Expression exp)
-        {
-            return new ParameterRebinder(map).Visit(exp);
-        }
+public class ReplaceVisitor : ExpressionVisitor
+{
+    private readonly Expression from, to;
 
-        protected override Expression VisitParameter(ParameterExpression p)
-        {
-            if (map.TryGetValue(p, out ParameterExpression? replacement))
-            {
-                p = replacement;
-            }
+    public ReplaceVisitor(Expression from, Expression to)
+    {
+        this.from = from;
+        this.to = to;
+    }
 
-            return base.VisitParameter(p);
-        }
-
+    public override Expression Visit(Expression node)
+    {
+        return node == from ? to : base.Visit(node);
     }
 }

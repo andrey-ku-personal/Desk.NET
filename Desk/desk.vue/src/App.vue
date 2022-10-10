@@ -1,30 +1,47 @@
 <template>
-  <nav>
-    <router-link to="/">Home</router-link> |
-    <router-link to="/about">About</router-link>
-  </nav>
-  <router-view />
+  <div class="main-page">
+    <sidebar-form></sidebar-form>
+    <router-view :key="$route.fullPath"></router-view>
+  </div>
 </template>
 
+<script lang="ts">
+import { defineComponent } from "vue";
+
+import SidebarForm from "@/components/sidebar/SidebarForm.vue";
+
+export default defineComponent({
+  components: {
+    SidebarForm,
+  },
+});
+</script>
+
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
+@font-face {
+  font-family: "Ubuntu-Regular";
+  src: local("Ubuntu-Regular"),
+    url("@/assets/fonts/ubuntu/Ubuntu-Regular.ttf") format("truetype");
 }
 
-nav {
-  padding: 30px;
+html {
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  margin: 0;
 }
 
-nav a {
-  font-weight: bold;
-  color: #2c3e50;
+body {
+  margin: 0px;
+  padding: 0px;
+  color: black;
+  font-family: "Ubuntu-Regular", sans-serif;
+  display: flex;
+  height: 100vh;
 }
 
-nav a.router-link-exact-active {
-  color: #42b983;
+.main-page {
+  display: flex;
+  flex-direction: row;
 }
 </style>

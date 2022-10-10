@@ -1,4 +1,4 @@
-﻿using BA.Core.Queries;
+﻿using Desk.Core.Queries;
 using System.Linq.Expressions;
 
 namespace Desk.Core.Handlers.Project.Queries;

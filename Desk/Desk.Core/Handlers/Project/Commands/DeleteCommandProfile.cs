@@ -1,8 +1,8 @@
 ﻿namespace Desk.Core.Handlers.Project.Commands;
 
-public class DelceteCommandProfile : Profile
+public class DeleteCommandProfile : Profile
 {
-    public DelceteCommandProfile()
+    public DeleteCommandProfile()
     {
         CreateMap<DeleteCommand, Domain.Entities.Project>();
         CreateMap<DeleteCommand, GetCommand>();

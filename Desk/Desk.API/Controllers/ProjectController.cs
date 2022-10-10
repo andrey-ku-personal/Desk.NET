@@ -1,6 +1,7 @@
 ﻿using Desk.Core.Endpoints;
 using Desk.Core.Handlers.Project.Commands;
 using Desk.Core.Handlers.Project.Models;
+using Desk.Core.Queries.Filter;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 
@@ -21,4 +22,7 @@ public class ProjectController : BaseEndpoint
     public async Task<ActionResult> Update([FromBody] UpdateCommand command) => await Send<UpdateCommand, ProjectModel>(command);
     [HttpPost("Delete")]
     public async Task<ActionResult> Delete([FromBody] DeleteCommand command) => await Send<DeleteCommand, Unit>(command);
+
+    [HttpPost("GetAll")]
+    public async Task<ActionResult> GetAll([FromBody] GetAllCommand command) => await Send<GetAllCommand, FilteredResult<ProjectModel>>(command);
 }
