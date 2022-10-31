@@ -1,5 +1,5 @@
 ﻿using BA.Core.Functional.Tests.Handlers.Team.Fakers.Project;
-using Desk.Core.Exceptions;
+using Desk.Shared.Exceptions;
 using Desk.Core.Functional.Tests.Fixtures;
 using Shouldly;
 using System.Threading.Tasks;

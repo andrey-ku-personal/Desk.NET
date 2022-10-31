@@ -1,5 +1,5 @@
 ﻿using Desk.Core.Handlers.Project.Models;
-using Desk.Core.Queries.Filter;
+using Desk.Shared.Queries.Filter;
 
 namespace Desk.Core.Handlers.Project.Commands;
 

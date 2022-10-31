@@ -9,12 +9,15 @@
 	</PropertyGroup>
 
 	<ItemGroup>
-		<PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.14.0" />
-		<PackageReference Include="Swashbuckle.AspNetCore" Version="6.2.3" />
+		<PackageReference Include="Microsoft.AspNetCore.Authentication.Google" Version="6.0.10" />
+		<PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.17.0" />
+		<PackageReference Include="NSwag.Annotations" Version="13.17.0" />
+		<PackageReference Include="Swashbuckle.AspNetCore" Version="6.4.0" />
 	</ItemGroup>
 
 	<ItemGroup>
 		<ProjectReference Include="..\Desk.Core\Desk.Core.csproj" />
+		<ProjectReference Include="..\Desk.Identity\Desk.Identity.csproj" />
 		<ProjectReference Include="..\Desk.Migrations\Desk.Migrations.csproj" />
 	</ItemGroup>
 

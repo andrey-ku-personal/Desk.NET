@@ -1,20 +1,11 @@
 <template>
-  <div class="main-page">
-    <sidebar-form></sidebar-form>
-    <router-view :key="$route.fullPath"></router-view>
-  </div>
+  <router-view :key="$route.fullPath"></router-view>
 </template>
 
 <script lang="ts">
 import { defineComponent } from "vue";
 
-import SidebarForm from "@/components/sidebar/SidebarForm.vue";
-
-export default defineComponent({
-  components: {
-    SidebarForm,
-  },
-});
+export default defineComponent({});
 </script>
 
 <style>
@@ -34,14 +25,9 @@ html {
 body {
   margin: 0px;
   padding: 0px;
-  color: black;
+  color: #3d474d;
   font-family: "Ubuntu-Regular", sans-serif;
   display: flex;
   height: 100vh;
-}
-
-.main-page {
-  display: flex;
-  flex-direction: row;
 }
 </style>

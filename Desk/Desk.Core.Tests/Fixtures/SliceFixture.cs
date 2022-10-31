@@ -18,7 +18,6 @@ public class SliceFixtureCollection : ICollectionFixture<SliceFixture> { }
 
 public class SliceFixture : IAsyncLifetime
 {
-    private readonly Checkpoint _checkpoint;
     private readonly IConfiguration _configuration;
     private readonly IServiceScopeFactory _scopeFactory;
     private readonly WebApplicationFactory<Program> _factory;
@@ -29,16 +28,19 @@ public class SliceFixture : IAsyncLifetime
 
         _configuration = _factory.Services.GetRequiredService<IConfiguration>();
         _scopeFactory = _factory.Services.GetRequiredService<IServiceScopeFactory>();
-
-        _checkpoint = new Checkpoint()
-        {
-            TablesToIgnore = new Table[] { "VersionInfo" }
-        };
     }
 
     public async Task InitializeAsync()
     {
-        await _checkpoint.Reset(_configuration.GetConnectionString("Default"));
+        var respawner = await Respawner.CreateAsync(_configuration.GetConnectionString("Default"), new RespawnerOptions
+        {
+            TablesToIgnore = new Table[]
+           {
+                "VersionInfo"
+           }
+        });
+
+        await respawner.ResetAsync(_configuration.GetConnectionString("Default"));
     }
 
     public async Task ExecuteScopeAsync(Func<IServiceProvider, Task> action)
@@ -100,12 +102,8 @@ internal class CustomTestApplicationFactory : WebApplicationFactory<Program>
     {
         builder.ConfigureAppConfiguration((_, configBuilder) =>
         {
-            configBuilder.AddInMemoryCollection(new Dictionary<string, string>
-                {
-                    {"ConnectionStrings:Default", _connectionString}
-                });
+            configBuilder.AddJsonFile("appsettings.json");
+            configBuilder.AddEnvironmentVariables();
         });
     }
-
-    private readonly string _connectionString = "Server=.;Database=Desk.Dev;Trusted_Connection=True;TrustServerCertificate=true;";
 }
