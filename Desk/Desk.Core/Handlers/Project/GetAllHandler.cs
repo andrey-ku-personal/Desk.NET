@@ -2,8 +2,8 @@
 using Desk.Core.Handlers.Project.Commands;
 using Desk.Core.Handlers.Project.Models;
 using Desk.Core.Handlers.Project.Queries;
-using Desk.Core.Queries;
-using Desk.Core.Queries.Filter;
+using Desk.Shared.Queries;
+using Desk.Shared.Queries.Filter;
 using Desk.Domain;
 using Microsoft.EntityFrameworkCore;
 

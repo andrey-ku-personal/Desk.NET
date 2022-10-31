@@ -13,14 +13,15 @@ import Card from "primevue/card";
 import Textarea from "primevue/textarea";
 import VirtualScroller from "primevue/virtualscroller";
 import RadioButton from "primevue/radiobutton";
+import Password from "primevue/password";
 
 import "primeflex/primeflex.css";
-import "primevue/resources/themes/arya-orange/theme.css";
+import "primevue/resources/themes/saga-green/theme.css";
 import "primevue/resources/primevue.min.css";
 import "primeicons/primeicons.css";
 
-import InputComponents from "@/components/input/index";
-import TextAreaComponents from "@/components/textarea/index";
+import InputComponents from "@/components/interfaceElements/input/index";
+import TextAreaComponents from "@/components/interfaceElements/textarea/index";
 
 const app = createApp(App);
 
@@ -33,6 +34,7 @@ app.component("p-card", Card);
 app.component("p-textarea", Textarea);
 app.component("p-virtual-scroller", VirtualScroller);
 app.component("p-radio-button", RadioButton);
+app.component("p-password", Password);
 
 InputComponents.forEach((component) => {
   app.component(component.name, component);

@@ -1,0 +1,12 @@
+{
+  "ConnectionStrings": {
+    "Default": "server=.;initial catalog=Desk.Test;integrated security=False;User ID=akn;Password=123456;multipleactiveresultsets=True;TrustServerCertificate=True;"
+  },
+  "Logging": {
+    "LogLevel": {
+      "Default": "Information",
+      "Microsoft.AspNetCore": "Warning"
+    }
+  },
+  "AllowedHosts": "*"
+}

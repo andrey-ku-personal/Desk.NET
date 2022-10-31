@@ -14,6 +14,7 @@ public class EntitiesDbContext : DbContext
     }
 
     public DbSet<Project> Projects { get; set; } = default!;
+    public DbSet<User> Users { get; set; } = default!;
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {

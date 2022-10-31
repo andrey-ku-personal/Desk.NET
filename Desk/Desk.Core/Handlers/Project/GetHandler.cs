@@ -1,9 +1,9 @@
 ﻿using AutoMapper.QueryableExtensions;
-using Desk.Core.Exceptions;
+using Desk.Shared.Exceptions;
 using Desk.Core.Handlers.Project.Commands;
 using Desk.Core.Handlers.Project.Models;
 using Desk.Core.Handlers.Project.Queries;
-using Desk.Core.Queries;
+using Desk.Shared.Queries;
 using Desk.Domain;
 using Microsoft.EntityFrameworkCore;
 
