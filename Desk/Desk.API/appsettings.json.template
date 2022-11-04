@@ -8,5 +8,11 @@
       "Microsoft.AspNetCore": "Warning"
     }
   },
+  "Jwt": {
+    "Secret": "ockE3mh_EEWXoaH65v5t2g",
+    "ExparedInMinutes": 20,
+    "Issuer": "JWTAuthenticationServer",
+    "Audience": "JWTServicePostmanClient"
+  },
   "AllowedHosts": "*"
 }
