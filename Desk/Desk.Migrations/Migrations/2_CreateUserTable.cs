@@ -8,7 +8,7 @@ public class CreateUserTable : Migration
     {
         Create.Table("User")
             .WithColumn("Id").AsInt32().PrimaryKey().Identity()
-            .WithColumn("UserId").AsString(128).NotNullable()
+            .WithColumn("UserName").AsString(128).NotNullable()
             .WithColumn("FirstName").AsString(128).NotNullable()
             .WithColumn("LastName").AsString(128).NotNullable()
             .WithColumn("Email").AsString(256).NotNullable()
@@ -18,12 +18,12 @@ public class CreateUserTable : Migration
             .WithColumn("Website").AsString(1024).Nullable()
             .WithColumn("Description").AsString(2024).Nullable();
 
-        Create.UniqueConstraint("UX_User_UserId").OnTable("User").Column("UserId");
+        Create.UniqueConstraint("UX_User_UserName").OnTable("User").Column("UserName");
     }
 
     public override void Down()
     {
-        Delete.UniqueConstraint("UX_User_UserId");
+        Delete.UniqueConstraint("UX_User_UserName");
         Delete.Table("User");
     }
 }

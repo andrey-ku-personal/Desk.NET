@@ -24,6 +24,7 @@ public class UpdateTests
         var command = new Faker().FakeUpdatedommand(created.Id);
         var result = await _fixture.SendAsync(command);
 
+        result.ShouldNotBeNull();
         result.Id.ShouldBe(command.Id);
         result.Name.ShouldBe(command.Name);
         result.Description.ShouldBe(command.Description);

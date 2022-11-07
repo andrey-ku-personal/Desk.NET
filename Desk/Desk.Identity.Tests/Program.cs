@@ -12,7 +12,7 @@ builder.Services.AddMigrationsDependencies(builder.Configuration);
 builder.Services.AddSharedDependencies();
 builder.Services.AddSharedSerializer();
 builder.Services.AddSharedCors();
-builder.Services.AddIdentityDependencies();
+builder.Services.AddIdentityDependencies(builder.Configuration);
 
 builder.Services.AddEndpointsApiExplorer();
 

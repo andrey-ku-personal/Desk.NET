@@ -3,11 +3,13 @@ using Desk.Core.Handlers.Project.Models;
 using Desk.Shared.Endpoints;
 using Desk.Shared.Queries.Filter;
 using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using NSwag.Annotations;
 
 namespace Desk.API.Controllers;
 
+[Authorize]
 public class ProjectController : BaseEndpoint
 {
     public ProjectController(IMediator mediator) : base(mediator)

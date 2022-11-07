@@ -1,12 +1,11 @@
 ﻿using Desk.Core.Functional.Tests.Fixtures;
-using Desk.Identity.Tests.Handlers.Fakers;
+using Desk.Identity.Tests.Handlers.User.Fakers;
 using Desk.Shared.Exceptions;
 using Shouldly;
-using System;
 using System.Threading.Tasks;
 using Xunit;
 
-namespace Desk.Identity.Tests.Handlers;
+namespace Desk.Identity.Tests.Handlers.User;
 
 [Collection(nameof(SliceFixture))]
 
@@ -23,7 +22,7 @@ public class CreateTests
         var result = await _fixture.SendAsync(command);
 
         result.Id.ShouldBeGreaterThan(0);
-        result.UserId.ShouldBe(result.UserId);
+        result.UserName.ShouldBe(result.UserName);
         result.FirstName.ShouldBe(result.FirstName);
         result.LastName.ShouldBe(result.LastName);
         result.CreateTime.ShouldBeGreaterThan(default);
